@@ -1,0 +1,13 @@
+model,z_plus_m_f1-score,z_amb_f1-score,z_zero_f1-score,z_minus_m_f1-score,macro avg_f1-score
+MLP tripadvisor fasttext cbow,77.0,38.98,65.42,77.98,64.85
+MLP tripadvisor lemm fasttext cbow,72.4,25.34,62.99,74.39,58.78
+MLP wikipedia fasttext cbow,65.54,32.38,61.95,71.17,57.76
+MLP wikipedia lemm fasttext cbow,62.56,2.03,60.95,68.11,48.41
+MLP tripadvisor fasttext skipgram,79.7,44.89,68.41,80.29,68.32
+MLP tripadvisor lemm fasttext skipgram,74.08,25.88,62.71,75.25,59.48
+MLP wikipedia fasttext skipgram,66.29,33.26,62.91,73.23,58.92
+MLP wikipedia lemm fasttext skipgram,64.08,4.62,55.36,69.56,48.4
+MLP tripadvisor word2vec cbow,76.1,41.01,63.9,75.98,64.25
+MLP tripadvisor lemm word2vec cbow,72.64,21.39,60.4,73.0,56.86
+MLP wikipedia word2vec cbow,61.76,34.34,56.62,64.6,54.33
+MLP wikipedia lemm word2vec cbow,58.07,3.37,57.72,66.86,46.5
