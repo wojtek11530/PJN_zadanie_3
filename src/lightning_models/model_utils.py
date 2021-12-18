@@ -4,10 +4,8 @@ import os
 import sys
 from typing import Tuple, List
 
-import matplotlib.pyplot as plt
 import pandas as pd
 import pytorch_lightning as pl
-import seaborn as sns
 import torch
 from pytorch_lightning.callbacks import EarlyStopping
 from pytorch_lightning.loggers import TensorBoardLogger
@@ -15,10 +13,10 @@ from sklearn.metrics import classification_report, confusion_matrix
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 
-from src.dataset import TextDataModule, TextDataset
-from src.mlp import MLPClassifier
+from src.data.dataset_lightning import TextDataModule, TextDataset
+from src.lightning_models.mlp import MLPClassifier
 from src.settings import MODELS_FOLDER
-from src.utils import dictionary_to_json, is_folder_empty
+from src.utils import dictionary_to_json, is_folder_empty, get_confusion_matrix_plot
 from src.word_embedder import FasttextWordEmbedder, Word2VecWordEmbedder, TransformersWordEmbedder
 
 log_format = '%(asctime)s %(message)s'
@@ -157,18 +155,6 @@ def test_model(model: torch.nn.Module, dataloader: DataLoader) -> Tuple[torch.Te
     predictions_tensor = torch.stack(predictions).cpu()
     real_values_tensor = torch.stack(real_values).cpu()
     return predictions_tensor, real_values_tensor
-
-
-def get_confusion_matrix_plot(conf_matrix: pd.DataFrame) -> Tuple[plt.figure, plt.Axes]:
-    fig, ax = plt.subplots()
-    hmap = sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues", cbar=False,
-                       annot_kws={"fontsize": 18}, square=True, ax=ax)
-    hmap.yaxis.set_ticklabels(hmap.yaxis.get_ticklabels(), rotation=0, fontsize=18)
-    hmap.xaxis.set_ticklabels(hmap.xaxis.get_ticklabels(), rotation=30, fontsize=18)
-    ax.set_ylabel('Rzecziwista klasa', fontsize=18)
-    ax.set_xlabel('Predykowana klasa', fontsize=18)
-    fig.tight_layout()
-    return fig, ax
 
 
 def manage_output_dir(model_name: str, word_embedding_model_type: str, word_embedding_model_dir: str) -> str:

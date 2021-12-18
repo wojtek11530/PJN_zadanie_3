@@ -1,9 +1,12 @@
 import abc
 import json
 import os
-from typing import Dict
+from typing import Dict, Tuple
 
 import numpy as np
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -32,3 +35,15 @@ def is_folder_empty(folder_name: str):
         return True
     else:
         return False
+
+
+def get_confusion_matrix_plot(conf_matrix: pd.DataFrame) -> Tuple[plt.figure, plt.Axes]:
+    fig, ax = plt.subplots()
+    hmap = sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues", cbar=False,
+                       annot_kws={"fontsize": 18}, square=True, ax=ax)
+    hmap.yaxis.set_ticklabels(hmap.yaxis.get_ticklabels(), rotation=0, fontsize=18)
+    hmap.xaxis.set_ticklabels(hmap.xaxis.get_ticklabels(), rotation=30, fontsize=18)
+    ax.set_ylabel('Rzecziwista klasa', fontsize=18)
+    ax.set_xlabel('Predykowana klasa', fontsize=18)
+    fig.tight_layout()
+    return fig, ax

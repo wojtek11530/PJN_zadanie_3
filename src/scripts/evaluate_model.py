@@ -2,7 +2,7 @@ import argparse
 import logging
 import sys
 
-from src.model_utils import evaluate_model
+from src.lightning_models.model_utils import evaluate_model
 
 log_format = '%(asctime)s %(message)s'
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
