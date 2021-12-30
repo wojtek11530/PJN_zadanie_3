@@ -1,0 +1,3 @@
+name,accuracy,macro avg_f1-score,z_plus_m_f1-score,z_amb_f1-score,z_zero_f1-score,z_minus_m_f1-score
+HerBERT,85.23,81.38,88.39,67.17,80.74,89.23
+KGR10-RoBERTa,81.73,77.61,85.63,62.38,76.78,85.64
