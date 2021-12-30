@@ -1,7 +1,9 @@
 # Przetwarzanie Języka Naturalnego - zadanie 3
 
-Model klasyfikujący napisany z wykorzystaniem biblioteki PyTorch Lightning. 
-Modelem jest MLP przyjmujące na wejściu średnią embeddingów słów w tekście.
+Modele klasyfikujące napisany z wykorzystaniem bibliotek PyTorch Lightning i HuggingFace.
+Dostępne modele:
+ - MLP przyjmujący na wejściu średnią embeddingów słów w tekście (embeddinig fastText lub word2vec),
+ - model Transformer do klasyfikacji zdań dostępny na HuggingFace.
 
 # Docker
 
@@ -19,12 +21,16 @@ docker run -it --gpus all --name pjn -v "$(pwd)":/app pjn bash
 
 # Model Transformer
 
-Trenowany poprzez skrypt `run_transformer_experiments.py`, w którym podaje się hiperparametry, w tym nazwę modelu
-Transformer dostępnego w repozytorium HuggingFace. W wyniku trenowania modelu w folderze `models\<nazwa_modelu>\finetuned`
-zapisze się checkpoint modelu, hiperparametry w pliku `hp.json`.
+Trenowany poprzez skrypt `run_transformer_experiments.py`:
+```
+python3 -m src.scripts.run_transformer_experiments
+```
+w którym podaje się hiperparametry, w tym nazwę modelu Transformer dostępnego w repozytorium HuggingFace. 
+W wyniku trenowania modelu w folderze `models/<nazwa_modelu>/finetuned` zapisze się checkpoint modelu,
+hiperparametry w pliku `hp.json`.
 
-Dodanie flagi `--do_test` dodatkowo uruchomi ewaluacje wytrenowanego modelu na zbiorze testowym, wyniki zapiszą się w folderze 
-`models\<nazwa_modelu>\finetuned`.
+Dodanie flagi `--do_test` dodatkowo uruchomi ewaluacje wytrenowanego modelu na zbiorze testowym, wyniki zapiszą się 
+w folderze `models/<nazwa_modelu>/finetuned`.
 
 # Model MLP
 

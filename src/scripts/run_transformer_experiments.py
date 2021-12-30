@@ -23,7 +23,7 @@ weight_decay = 0.01
 def main():
     os.chdir(PROJECT_FOLDER)
 
-    cmd = 'python -m src.scripts.train_transformer '
+    cmd = 'python3 -m src.scripts.train_transformer '
     options = [
         '--model_name', model_name,
         '--data_dir', dataset_dir,
