@@ -80,6 +80,9 @@ def train_model(model_name: str, data_dir: str, output_size: int,
     trainer.train()
     logger.info("Training finished.")
 
+    trainer.save_model(output_dir)
+    trainer.save_state()
+
     output_training_params_file = os.path.join(output_dir, "hp.json")
     dictionary_to_json(training_parameters, output_training_params_file)
 
