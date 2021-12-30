@@ -23,7 +23,7 @@ def main():
     cols = df.columns.tolist()
     cols = cols[-2:] + cols[:-2]
     df = df[cols]
-    df.to_csv(os.path.join(DATA_FOLDER, 'results_lista_3.csv'), index=False)
+    df.to_csv(os.path.join(DATA_FOLDER, 'results_lista_3_mlp.csv'), index=False)
 
 
 def get_immediate_subdirectories(a_dir):

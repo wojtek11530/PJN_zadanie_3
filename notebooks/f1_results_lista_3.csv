@@ -1,3 +1,4 @@
-name,accuracy,macro avg_f1-score,z_plus_m_f1-score,z_amb_f1-score,z_zero_f1-score,z_minus_m_f1-score
+Metoda,Dokładność,Makro F1,SP,AMB,0,SN
+MLP - Tripadvisor fastText,74.73,68.32,79.7,44.89,68.41,80.29
 HerBERT,85.23,81.38,88.39,67.17,80.74,89.23
 KGR10-RoBERTa,81.73,77.61,85.63,62.38,76.78,85.64
