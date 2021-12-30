@@ -12,30 +12,31 @@ logger = logging.getLogger(__name__)
 
 dataset_dir = os.path.join(DATA_FOLDER, 'dataset_conll')
 
-model_name = 'allegro/herbert-base-cased'
+model_names = ['allegro/herbert-base-cased', 'clarin-pl/roberta-polish-kgr10']
 output_size = 4
 max_seq_length = 128
 batch_size = 32
-num_train_epochs = 1
+num_train_epochs = 3
 learning_rate = 5e-5
 weight_decay = 0.01
 
 
 def main():
-    args = {
-        'model_name': model_name,
-        'data_dir': dataset_dir,
-        'output_size': output_size,
-        'batch_size': batch_size,
-        'epochs': num_train_epochs,
-        'learning_rate': learning_rate,
-        'weight_decay': weight_decay,
-        'max_seq_length': max_seq_length,
-        'do_lower_case': True,
-        'do_test': True
-    }
-    logger.info(f"Training {model_name}")
-    train_model(**args)
+    for model_name in model_names:
+        args = {
+            'model_name': model_name,
+            'data_dir': dataset_dir,
+            'output_size': output_size,
+            'batch_size': batch_size,
+            'epochs': num_train_epochs,
+            'learning_rate': learning_rate,
+            'weight_decay': weight_decay,
+            'max_seq_length': max_seq_length,
+            'do_lower_case': True,
+            'do_test': True
+        }
+        logger.info(f"Training {model_name}")
+        train_model(**args)
 
 
 if __name__ == '__main__':
