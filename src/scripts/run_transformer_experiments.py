@@ -13,8 +13,8 @@ dataset_dir = os.path.relpath(os.path.join(DATA_FOLDER, 'dataset_conll'), start=
 
 model_name = 'allegro/herbert-base-cased'
 
-max_seq_length = 32
-batch_size = 8
+max_seq_length = 128
+batch_size = 32
 num_train_epochs = 1
 learning_rate = 5e-5
 weight_decay = 0.01
