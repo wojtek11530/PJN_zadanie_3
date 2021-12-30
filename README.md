@@ -29,6 +29,20 @@ w którym podaje się hiperparametry, w tym nazwę modelu Transformer dostępneg
 W wyniku trenowania modelu w folderze `models/<nazwa_modelu>/finetuned` zapisze się checkpoint modelu,
 hiperparametry w pliku `hp.json`.
 
+Możliwe jest także uruchominie trenowania z konsoli:
+```
+python -m src.scripts.train_model \
+  --model_name ${MODEL_NAME} \
+  --data_dir ${MULTIEMO_HOTEL_DATA_DIR} \
+  --output_size ${OUTPUT_SIZE} \
+  --epochs ${EPOCHS} \
+  --batch_size ${BS} \
+  --learning_rate ${LR} \
+  --weight_decay ${WD} \
+  --max_seq_length ${MAX_SEQ_LEN} \
+  --do_lower_case \
+  --do_test
+```
 Dodanie flagi `--do_test` dodatkowo uruchomi ewaluacje wytrenowanego modelu na zbiorze testowym, wyniki zapiszą się 
 w folderze `models/<nazwa_modelu>/finetuned`.
 

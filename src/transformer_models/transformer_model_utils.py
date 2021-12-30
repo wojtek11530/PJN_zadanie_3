@@ -93,11 +93,11 @@ def train_model(model_name: str, data_dir: str, output_size: int,
             tokenizer=tokenizer,
             max_seq_length=max_seq_length
         )
-        logger.info("Train dataset loaded.")
+        logger.info("Test dataset loaded.")
 
         prediction_output = trainer.predict(test_dataset)
         y_true = prediction_output.label_ids
-        y_pred = prediction_output.predictions
+        y_pred = np.argmax(prediction_output.predictions, axis=-1)
 
         print('\n\t**** Classification report ****\n')
         classes_names = test_dataset.label_encoder.classes_
