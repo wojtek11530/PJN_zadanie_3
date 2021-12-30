@@ -35,6 +35,7 @@ def main():
             'do_lower_case': True,
             'do_test': True
         }
+        logger.info('The args: {}'.format(args))
         logger.info(f"Training {model_name}")
         train_model(**args)
 
